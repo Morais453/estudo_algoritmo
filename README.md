@@ -4,7 +4,7 @@
 Repositório para lista de estudos de algoritmos em Java e Python, com o PDF que descreve a ordem dos estudos.
 
 ## Conteúdo
-- Sequência de algoritmos em Java
+- Sequência de algoritmos em Java (Não concluido)
 - Sequência de algoritmos em Python
 - Exemplos de implementação
 - Desafios e exercícios
