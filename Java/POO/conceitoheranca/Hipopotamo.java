@@ -3,6 +3,10 @@ package conceitoheranca;
 public class Hipopotamo extends Animal{
     private int forcaMordida;
 
+    public Hipopotamo(String nome, int idade, String sexo) {
+        super();
+    }
+
     public void nadar(){
         System.out.println("Nadando");
     }

@@ -4,6 +4,14 @@ public class Panda extends Animal{
     private String cor;
     private String corSecundaria;
 
+    public Panda(String nome, int idade, String sexo) {
+        super();
+    }
+
+    public Panda() {
+        super();
+    }
+
     public void subirArvore(){
         System.out.println("Subir Arvore");
     }
@@ -24,10 +32,10 @@ public class Panda extends Animal{
         this.cor = cor;
     }
 
-    public void imprimirDados(){
-        System.out.println("Nome: " + getNome());
-        System.out.println("Idade: " + getIdade());
-        System.out.println("Sexo: " + getSexo());
-        System.out.println("Cores: " + getCor() + " e " + getCorSecundaria());
+    @Override
+    public void imprimirDados() {
+        super.imprimirDados();
+        System.out.println("Cor primaria: " + this.getCor());
+        System.out.println("Cor secundaria: " + this.getCorSecundaria());
     }
 }

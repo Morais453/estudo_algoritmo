@@ -5,6 +5,9 @@ public class Animal {
     private int idade;
     private String sexo;
 
+    protected Animal() {
+    }
+
     public String getNome() {
         return nome;
     }
@@ -29,7 +32,7 @@ public class Animal {
         this.sexo = sexo;
     }
 
-    public void imprimirDados(){
+    protected void imprimirDados(){
         System.out.println("Nome: " + getNome());
         System.out.println("Idade: " + getIdade());
         System.out.println("Sexo: " + getSexo());
