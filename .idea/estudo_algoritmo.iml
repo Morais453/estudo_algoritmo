@@ -6,6 +6,7 @@
       <sourceFolder url="file://$MODULE_DIR$/Java/POO" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Java/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Java/cadastro-cliente/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Java/cadastro-cliente" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

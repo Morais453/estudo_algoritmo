@@ -1,19 +1,25 @@
 package com.morais.clientes.dominio;
 
+import com.morais.clientes.dominio.enums.TipoSexo;
+
 import java.util.UUID;
 
 public class Cliente {
     private UUID codigo;
     private String nome;
     private String cpf;
-    private String sexo;
+    private TipoSexo sexo;
     private byte[] fotoCliente;
 
-    public Cliente(String nome, String cpf, String sexo) {
+    public Cliente(String nome, String cpf, TipoSexo sexo) {
         this.codigo = UUID.randomUUID();
         this.nome = nome;
         this.cpf = cpf;
         this.sexo = sexo;
+    }
+
+    public Cliente() {
+
     }
 
     public String getNome() {
@@ -40,11 +46,11 @@ public class Cliente {
         this.cpf = cpf;
     }
 
-    public String getSexo() {
+    public TipoSexo getSexo() {
         return sexo;
     }
 
-    public void setSexo(String sexo) {
+    public void setSexo(TipoSexo sexo) {
         this.sexo = sexo;
     }
 
@@ -54,5 +60,10 @@ public class Cliente {
 
     public void setFotoCliente(byte[] fotoCliente) {
         this.fotoCliente = fotoCliente;
+    }
+
+    public Object imprimirCliente() {
+        String[] teste = {"Cliente: " + getNome(), "CPF: " + getCpf(), "Cadatrado com sucesso!"};
+        return teste;
     }
 }
