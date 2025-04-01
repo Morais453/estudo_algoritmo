@@ -2,6 +2,8 @@ package com.morais.clientes.apresentacao;
 
 import com.morais.clientes.dominio.Cliente;
 import com.morais.clientes.dominio.enums.TipoSexo;
+import com.morais.clientes.logicanegocio.Cadastro;
+import com.morais.clientes.logicanegocio.LogicaCadastroFake;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -86,7 +88,10 @@ public class TelaCadastro extends JFrame {
                 cliente.setCpf(campoCpf.getText());
                 cliente.setSexo((TipoSexo) campoSexo.getSelectedItem());
 
-                JOptionPane.showMessageDialog(null, cliente.imprimirCliente());
+                Cadastro<Cliente> logicaCadastro = new LogicaCadastroFake();
+                logicaCadastro.salvar(cliente);
+
+
             }
         };
     }

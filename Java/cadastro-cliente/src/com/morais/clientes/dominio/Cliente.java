@@ -18,8 +18,17 @@ public class Cliente {
         this.sexo = sexo;
     }
 
-    public Cliente() {
+    @Override
+    public String toString() {
+        return "Cliente{" +
+                "codigo=" + getCodigo() +
+                ", nome='" + getNome() + '\'' +
+                ", cpf='" + getCpf() + '\'' +
+                ", sexo=" + getSexo();
+    }
 
+    public Cliente() {
+        this.codigo = UUID.randomUUID();
     }
 
     public String getNome() {
@@ -31,11 +40,7 @@ public class Cliente {
     }
 
     public UUID getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(UUID codigo) {
-        this.codigo = codigo;
+        return this.codigo;
     }
 
     public String getCpf() {
@@ -60,10 +65,5 @@ public class Cliente {
 
     public void setFotoCliente(byte[] fotoCliente) {
         this.fotoCliente = fotoCliente;
-    }
-
-    public Object imprimirCliente() {
-        String[] teste = {"Cliente: " + getNome(), "CPF: " + getCpf(), "Cadatrado com sucesso!"};
-        return teste;
     }
 }
