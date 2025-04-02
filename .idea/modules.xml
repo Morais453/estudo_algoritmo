@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/cadastro-cliente/cadastro-cliente.iml" filepath="$PROJECT_DIR$/cadastro-cliente/cadastro-cliente.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/estudo_algoritmo.iml" filepath="$PROJECT_DIR$/.idea/estudo_algoritmo.iml" />
     </modules>
   </component>
