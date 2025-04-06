@@ -4,6 +4,7 @@ import com.morais.clientes.dominio.Cliente;
 import com.morais.clientes.dominio.enums.TipoSexo;
 import com.morais.clientes.logicanegocio.Cadastro;
 import com.morais.clientes.logicanegocio.LogicaCadastroCliente;
+import com.morais.clientes.logicanegocio.LogicaCadastroMemoria;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -21,6 +22,7 @@ public class TelaCadastro extends JFrame {
 
     private JButton botaoSalvar;
 
+    private Cadastro<Cliente> logicaCadastro = new LogicaCadastroMemoria();
 
     public TelaCadastro() {
         construirTela();
@@ -87,10 +89,10 @@ public class TelaCadastro extends JFrame {
                         campoCpf.getText(),
                         (TipoSexo) campoSexo.getSelectedItem());
 
-                Cadastro<Cliente> logicaCadastro = new LogicaCadastroCliente();
+
                 logicaCadastro.salvar(cliente);
 
-
+                logicaCadastro.imprimirRegistros();
             }
         };
     }

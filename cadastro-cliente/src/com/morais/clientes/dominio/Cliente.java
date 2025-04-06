@@ -35,10 +35,9 @@ public class Cliente {
 
     @Override
     public String toString() {
-        return "O cliente \nNome = " + nome + "\n" +
+        return "Nome = " + nome + "\n" +
                 "CPF = " + cpf + "\n" +
-                "Sexo = " + sexo.getDescricao() +
-                "\nfoi cadastrado com sucesso!";
+                "Sexo = " + sexo.getDescricao();
     }
 
     @Override
