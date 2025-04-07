@@ -6,7 +6,8 @@ import java.util.Arrays;
 import java.util.Objects;
 import java.util.UUID;
 
-public class Cliente {
+public class Cliente implements Comparable<Cliente> {
+
     private final UUID codigoCliente;
     private String nome;
     private String cpf;
@@ -80,5 +81,15 @@ public class Cliente {
 
     public void setFoto(byte[] foto) {
         this.foto = foto;
+    }
+
+    @Override
+    public int compareTo(Cliente o) {
+        int fator = this.nome.compareTo(o.getNome());
+        if (fator == 0) {
+            fator = this.sexo.equals(TipoSexo.M) ? 1 : -1;
+        }
+
+        return fator;
     }
 }

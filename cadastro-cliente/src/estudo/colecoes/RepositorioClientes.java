@@ -1,4 +1,4 @@
-package com.morais.clientes.colecoes;
+package estudo.colecoes;
 
 import com.morais.clientes.dominio.Cliente;
 
