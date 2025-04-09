@@ -5,6 +5,7 @@ import com.morais.clientes.dominio.enums.TipoSexo;
 import com.morais.clientes.logicanegocio.Cadastro;
 import com.morais.clientes.logicanegocio.LogicaCadastroCliente;
 import com.morais.clientes.logicanegocio.LogicaCadastroMemoria;
+import estudo.exceptions.CpfInvalidoException;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -85,14 +86,18 @@ public class TelaCadastro extends JFrame {
         return new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Cliente cliente = new Cliente(campoNome.getText(),
-                        campoCpf.getText(),
-                        (TipoSexo) campoSexo.getSelectedItem());
+                Cliente cliente = new Cliente(campoNome.getText(), campoCpf.getText(), (TipoSexo) campoSexo.getSelectedItem());
+
+                try {
+                    logicaCadastro.salvar(cliente);
+                    logicaCadastro.imprimirRegistros();
+                } catch (CpfInvalidoException ex) {
+                    JOptionPane.showMessageDialog(null, ex.getMessage());
+                } catch (Exception ex){
+                    JOptionPane.showMessageDialog(null, ex.getMessage());
+                }
 
 
-                logicaCadastro.salvar(cliente);
-
-                logicaCadastro.imprimirRegistros();
             }
         };
     }

@@ -2,18 +2,22 @@ package estudo.exceptions;
 
 import com.morais.clientes.dominio.Cliente;
 import com.morais.clientes.dominio.enums.TipoSexo;
+import com.morais.clientes.logicanegocio.ValidadorCliente;
 
 public class Main {
     public static void main(String[] args) {
 
         try{
-            Cliente cliente = new Cliente("Junin","00000", TipoSexo.F);
-            String descricao = cliente.getSexo().getDescricao();
-            System.out.println(descricao);
-        } catch (NullPointerException e) {
-            System.out.println("Tipo sexo nulo");
-        } catch (Exception e){
-            System.out.println("Ocorreu um erro");
+            Cliente cliente = new Cliente("Morais","0000000000", TipoSexo.F);
+            ValidadorCliente.Validar(cliente);
+
+        } catch (CpfInvalidoException e) {
+            System.out.println(e.getMessage());
+        } catch (DadoObrigatorioException e){
+            System.out.println(e.getMessage());
+        } finally {
+            //executa dando erro ou não
+            System.out.println("Fim");
         }
     }
 }

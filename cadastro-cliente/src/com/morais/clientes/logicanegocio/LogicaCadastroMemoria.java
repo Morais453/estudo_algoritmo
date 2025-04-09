@@ -1,6 +1,8 @@
 package com.morais.clientes.logicanegocio;
 
 import com.morais.clientes.dominio.Cliente;
+import estudo.exceptions.CpfInvalidoException;
+import estudo.exceptions.DadoObrigatorioException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +18,8 @@ public class LogicaCadastroMemoria  implements Cadastro<Cliente> {
     }
 
     @Override
-    public void salvar(Cliente cliente) {
+    public void salvar(Cliente cliente) throws CpfInvalidoException {
+        ValidadorCliente.Validar(cliente);
         this.clientesLista.add(cliente);
     }
 
