@@ -91,8 +91,6 @@ public class TelaCadastro extends JFrame {
                 try {
                     logicaCadastro.salvar(cliente);
                     logicaCadastro.imprimirRegistros();
-                } catch (CpfInvalidoException ex) {
-                    JOptionPane.showMessageDialog(null, ex.getMessage());
                 } catch (Exception ex){
                     JOptionPane.showMessageDialog(null, ex.getMessage());
                 }

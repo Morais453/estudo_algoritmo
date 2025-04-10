@@ -11,8 +11,6 @@ public class Main {
             Cliente cliente = new Cliente("Morais","0000000000", TipoSexo.F);
             ValidadorCliente.Validar(cliente);
 
-        } catch (CpfInvalidoException e) {
-            System.out.println(e.getMessage());
         } catch (DadoObrigatorioException e){
             System.out.println(e.getMessage());
         } finally {
