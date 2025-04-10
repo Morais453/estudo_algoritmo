@@ -12,6 +12,8 @@ public class Cliente implements Comparable<Cliente> {
     private String nome;
     private String cpf;
     private TipoSexo sexo;
+    private Integer idade;
+    private Boolean ativo;
     private byte[] foto;
 
     public Cliente(String nome, String cpf, TipoSexo sexo) {
@@ -33,6 +35,45 @@ public class Cliente implements Comparable<Cliente> {
         this.nome = nome;
     }
 
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public TipoSexo getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(TipoSexo sexo) {
+        this.sexo = sexo;
+    }
+
+    public Integer getIdade() {
+        return idade;
+    }
+
+    public void setIdade(Integer idade) {
+        this.idade = idade;
+    }
+
+    public Boolean getAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(Boolean ativo) {
+        this.ativo = ativo;
+    }
+
+    public byte[] getFoto() {
+        return foto;
+    }
+
+    public void setFoto(byte[] foto) {
+        this.foto = foto;
+    }
 
     @Override
     public String toString() {
@@ -57,30 +98,6 @@ public class Cliente implements Comparable<Cliente> {
         result = 31 * result + Objects.hashCode(sexo);
         result = 31 * result + Arrays.hashCode(foto);
         return result;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    public TipoSexo getSexo() {
-        return sexo;
-    }
-
-    public void setSexo(TipoSexo sexo) {
-        this.sexo = sexo;
-    }
-
-    public byte[] getFoto() {
-        return foto;
-    }
-
-    public void setFoto(byte[] foto) {
-        this.foto = foto;
     }
 
     @Override
