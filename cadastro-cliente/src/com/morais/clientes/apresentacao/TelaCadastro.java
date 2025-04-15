@@ -8,20 +8,25 @@ import com.morais.clientes.logicanegocio.LogicaCadastroMemoria;
 import estudo.exceptions.CpfInvalidoException;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.net.URL;
 
 public class TelaCadastro extends JFrame {
 
     private JLabel labelNome;
     private JLabel labelCPF;
     private JLabel labelSexo;
+    private JLabel labelFoto;
 
     private JTextField campoNome;
     private JTextField campoCpf;
     private JComboBox<TipoSexo> campoSexo;
 
     private JButton botaoSalvar;
+    private JButton botaoEscolherFoto;
 
     private Cadastro<Cliente> logicaCadastro = new LogicaCadastroMemoria();
 
@@ -80,13 +85,63 @@ public class TelaCadastro extends JFrame {
 
     private void adicionarComponentesFoto(){
 
+        String caminhoArquivo = "/com/morais/clientes/apresentacao/images.png";
+        URL localizacao = getClass().getResource(caminhoArquivo);
+        ImageIcon imageIcon;
+        imageIcon = new ImageIcon(localizacao);
+
+        Image imgRedimencionada = imageIcon.getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH);
+        imageIcon = new ImageIcon(imgRedimencionada);
+
+        labelFoto = new JLabel();
+        labelFoto.setIcon(imageIcon);
+        labelFoto.setBounds(240,30,200,200);
+
+        getContentPane().add(labelFoto);
+
+        botaoEscolherFoto = new JButton("Alterar Foto");
+        botaoEscolherFoto.setBounds(260,200,160,20);
+        botaoEscolherFoto.addActionListener(this.botaoEscolherFotoActionListener());
+
+        getContentPane().add(botaoEscolherFoto);
+    }
+
+    private ActionListener botaoEscolherFotoActionListener(){
+        return new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFileChooser fileChooser = new JFileChooser();
+                int opcao = fileChooser.showOpenDialog(TelaCadastro.this);
+
+                if (opcao == JFileChooser.APPROVE_OPTION) {
+                    File arquivoSelecionado = fileChooser.getSelectedFile();
+                    String caminhoArquivo = arquivoSelecionado.getAbsolutePath();
+
+                    ImageIcon imageIcon;
+                    imageIcon = new ImageIcon(caminhoArquivo);
+
+                    Image imgRedimencionada = imageIcon.getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH);
+                    imageIcon = new ImageIcon(imgRedimencionada);
+
+                    labelFoto.setIcon(imageIcon);
+
+                } else if (opcao == JFileChooser.CANCEL_OPTION) {
+
+                } else {
+
+                }
+
+            }
+        };
     }
 
     private ActionListener botaoSalvarActionListener(){
         return new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Cliente cliente = new Cliente(campoNome.getText(), campoCpf.getText(), (TipoSexo) campoSexo.getSelectedItem());
+                Cliente cliente = new Cliente(campoNome.getText(),
+                        campoCpf.getText(),
+                        (TipoSexo) campoSexo.getSelectedItem());
 
                 try {
                     logicaCadastro.salvar(cliente);
