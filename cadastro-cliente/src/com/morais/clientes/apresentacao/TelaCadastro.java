@@ -5,6 +5,7 @@ import com.morais.clientes.dominio.enums.TipoSexo;
 import com.morais.clientes.logicanegocio.Cadastro;
 import com.morais.clientes.logicanegocio.LogicaCadastroCliente;
 import com.morais.clientes.logicanegocio.LogicaCadastroMemoria;
+import com.morais.clientes.utilitario.ConversorIconParaByteArray;
 import estudo.exceptions.CpfInvalidoException;
 
 import javax.swing.*;
@@ -110,8 +111,8 @@ public class TelaCadastro extends JFrame {
         return new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFileChooser fileChooser = new JFileChooser();
-                int opcao = fileChooser.showOpenDialog(TelaCadastro.this);
+                JFileChooser fileChooser = new JFileChooser(); //escolher arquivo
+                int opcao = fileChooser.showOpenDialog(TelaCadastro.this); //abrir janela
 
                 if (opcao == JFileChooser.APPROVE_OPTION) {
                     File arquivoSelecionado = fileChooser.getSelectedFile();
@@ -142,6 +143,8 @@ public class TelaCadastro extends JFrame {
                 Cliente cliente = new Cliente(campoNome.getText(),
                         campoCpf.getText(),
                         (TipoSexo) campoSexo.getSelectedItem());
+
+                byte[] byteArray = ConversorIconParaByteArray.converter(labelFoto.getIcon());
 
                 try {
                     logicaCadastro.salvar(cliente);

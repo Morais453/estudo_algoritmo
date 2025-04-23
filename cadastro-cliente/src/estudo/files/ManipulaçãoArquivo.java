@@ -2,9 +2,9 @@ package estudo.files;
 
 import java.io.*;
 
-public class CriadorArquivo {
+public class ManipulaçãoArquivo {
     public static void main(String[] args) throws IOException {
-        CriadorArquivo criadorArquivo = new CriadorArquivo();
+        ManipulaçãoArquivo criadorArquivo = new ManipulaçãoArquivo();
         criadorArquivo.criarArquivo();
         criadorArquivo.lerArquivoTexto();
 
