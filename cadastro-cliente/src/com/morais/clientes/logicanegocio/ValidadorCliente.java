@@ -18,6 +18,8 @@ public class ValidadorCliente {
             throw new DadoObrigatorioException("CPF com quantidade de caracteres inválido!!!");
         } if(cliente.getSexo() == null){
             throw new DadoObrigatorioException("Sexo Obrigatorio");
+        } if (cliente.getFoto() == null){
+            throw new DadoObrigatorioException("Foto Obrigatorio");
         }
     }
 

@@ -86,13 +86,7 @@ public class TelaCadastro extends JFrame {
 
     private void adicionarComponentesFoto(){
 
-        String caminhoArquivo = "/com/morais/clientes/apresentacao/images.png";
-        URL localizacao = getClass().getResource(caminhoArquivo);
-        ImageIcon imageIcon;
-        imageIcon = new ImageIcon(localizacao);
-
-        Image imgRedimencionada = imageIcon.getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH);
-        imageIcon = new ImageIcon(imgRedimencionada);
+        ImageIcon imageIcon = obterImagemPadraoFoto();
 
         labelFoto = new JLabel();
         labelFoto.setIcon(imageIcon);
@@ -105,6 +99,17 @@ public class TelaCadastro extends JFrame {
         botaoEscolherFoto.addActionListener(this.botaoEscolherFotoActionListener());
 
         getContentPane().add(botaoEscolherFoto);
+    }
+
+    private ImageIcon obterImagemPadraoFoto() {
+        String caminhoArquivo = "/com/morais/clientes/apresentacao/images.png";
+        URL localizacao = getClass().getResource(caminhoArquivo);
+        ImageIcon imageIcon;
+        imageIcon = new ImageIcon(localizacao);
+
+        Image imgRedimencionada = imageIcon.getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH);
+        imageIcon = new ImageIcon(imgRedimencionada);
+        return imageIcon;
     }
 
     private ActionListener botaoEscolherFotoActionListener(){
@@ -140,15 +145,23 @@ public class TelaCadastro extends JFrame {
         return new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                byte[] byteArray = ConversorIconParaByteArray.converter(labelFoto.getIcon());
+
                 Cliente cliente = new Cliente(campoNome.getText(),
                         campoCpf.getText(),
-                        (TipoSexo) campoSexo.getSelectedItem());
+                        (TipoSexo) campoSexo.getSelectedItem(),
+                        byteArray);
 
-                byte[] byteArray = ConversorIconParaByteArray.converter(labelFoto.getIcon());
 
                 try {
                     logicaCadastro.salvar(cliente);
-                    logicaCadastro.imprimirRegistros();
+
+                    campoNome.setText("");
+                    campoCpf.setText("");
+                    campoSexo.setSelectedIndex(0);
+                    labelFoto.setIcon(obterImagemPadraoFoto());
+
+                    JOptionPane.showMessageDialog(TelaCadastro.this, "Salvo com sucesso!");
                 } catch (Exception ex){
                     JOptionPane.showMessageDialog(null, ex.getMessage());
                 }

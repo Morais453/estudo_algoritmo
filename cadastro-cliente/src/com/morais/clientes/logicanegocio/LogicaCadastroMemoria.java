@@ -1,6 +1,7 @@
 package com.morais.clientes.logicanegocio;
 
 import com.morais.clientes.dominio.Cliente;
+import com.morais.clientes.utilitario.GerenciadorArquivos;
 import estudo.exceptions.CpfInvalidoException;
 import estudo.exceptions.DadoObrigatorioException;
 
@@ -21,6 +22,7 @@ public class LogicaCadastroMemoria  implements Cadastro<Cliente> {
     public void salvar(Cliente cliente) throws CpfInvalidoException {
         ValidadorCliente.Validar(cliente);
         this.clientesLista.add(cliente);
+        GerenciadorArquivos.persistirArquivos(cliente.getNome() + ".png", cliente.getFoto() );
     }
 
     @Override
