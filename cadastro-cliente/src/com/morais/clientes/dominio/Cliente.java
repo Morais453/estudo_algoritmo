@@ -30,6 +30,11 @@ public class Cliente implements Comparable<Cliente> {
         this.foto = foto;
     }
 
+    public Cliente() {
+        this.codigoCliente = UUID.randomUUID();
+        this.sexo = null;
+    }
+
     public UUID getCodigoCliente() {
         return codigoCliente;
     }
@@ -86,7 +91,7 @@ public class Cliente implements Comparable<Cliente> {
     public String toString() {
         return "Nome = " + nome + "\n" +
                 "CPF = " + cpf + "\n" +
-                "Sexo = " + sexo.getDescricao() +"\n"+
+                "Sexo = " + sexo +"\n"+
                 "Foto = " + foto;
     }
 
